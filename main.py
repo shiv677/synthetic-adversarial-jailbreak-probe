@@ -26,6 +26,7 @@ def run_cli_audit(data_path: Path, mode: str = "standard") -> RefusalMetrics:
         MutationStrategy.BASE64,
         MutationStrategy.CIPHER_ROT13,
         MutationStrategy.PREFIX_INJECTION,
+        MutationStrategy.HYPOTHETICAL_FRAMING,
         MutationStrategy.LEETSPEAK,
     ]
 

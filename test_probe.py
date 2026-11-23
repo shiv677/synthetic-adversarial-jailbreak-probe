@@ -78,3 +78,10 @@ def test_run_adversarial_audit_end_to_end():
     assert metrics.total_probes > 0
     assert metrics.safe_refusals > 0
     assert metrics.benign_passes > 0
+
+    leaky_metrics = run_cli_audit(dataset_path, mode="leaky")
+    assert 0.0 <= leaky_metrics.attack_success_rate <= 1.0
+
+    strict_metrics = run_cli_audit(dataset_path, mode="strict")
+    assert strict_metrics.refusal_accuracy == 1.0
+    assert strict_metrics.unsafe_bypasses == 0
